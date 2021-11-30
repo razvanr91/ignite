@@ -1,5 +1,4 @@
 // Base URL
-// c1b8f9ec43bf4957a49c9d0eb733b678
 const base_url = "https://api.rawg.io/api/"
 
 // Get date
