@@ -30,3 +30,4 @@ const new_games = `${base_url}games?key=${process.env.REACT_APP_RAWG_KEY}&dates=
 export const popularGamesUrl = () => popular_games;
 export const upcomingGamesUrl = () => upcoming_games;
 export const newGamesUrl = () => new_games;
+export const gameDetailsUrl = (gameId) => `${base_url}games/${gameId}?key=${process.env.REACT_APP_RAWG_KEY}`;
