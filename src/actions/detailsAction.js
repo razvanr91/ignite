@@ -9,7 +9,7 @@ export const getDetails = (id) => async (dispatch) => {
         type: "GET_DETAILS",
         payload: {
             game: detailsData.data,
-            screen: screenshotsData.data
+            screenshots: screenshotsData.data
         }
     })
 };
