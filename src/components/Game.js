@@ -2,6 +2,9 @@ import React from "react";
 // Styling and animations
 import styled from "styled-components";
 import { motion } from "framer-motion/dist/es";
+// Redux
+import { useDispatch } from "react-redux";
+import { getDetails } from "../actions/detailsAction";
 
 const StyledGame = styled(motion.div)`
     min-height: 30vh;
@@ -17,8 +20,13 @@ const StyledGame = styled(motion.div)`
 `;
 
 export default function Game({ game }) {
+    const dispatch = useDispatch();
+    const loadDetailsHandler = () => {
+        dispatch(getDetails(game.id));
+    }
+
     return (
-        <StyledGame>
+        <StyledGame onClick={loadDetailsHandler} >
             <h3>{game.name}</h3>
             <p>{game.released}</p>
             <img src={game.background_image} alt={game.name} />

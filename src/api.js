@@ -31,3 +31,4 @@ export const popularGamesUrl = () => popular_games;
 export const upcomingGamesUrl = () => upcoming_games;
 export const newGamesUrl = () => new_games;
 export const gameDetailsUrl = (gameId) => `${base_url}games/${gameId}?key=${process.env.REACT_APP_RAWG_KEY}`;
+export const gameScreenshotsUrl = (gameId) => `${base_url}games/${gameId}/screenshots?key=${process.env.REACT_APP_RAWG_KEY}`;
