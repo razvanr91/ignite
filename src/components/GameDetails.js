@@ -5,6 +5,14 @@ import { motion } from "framer-motion/dist/es";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom"
 import { smallImage } from "../util";
+// Images
+import playstation from "../img/playstation.svg";
+import playstationFive from "../img/PlayStation5.svg";
+import steam from "../img/steam.svg";
+import apple from "../img/apple.svg";
+import xbox from "../img/xbox.svg";
+import nintendo from "../img/nintendo.svg";
+import gamepad from "../img/gamepad.svg";
 
 const CardShadow = styled(motion.div)`
     width:100%;
@@ -79,6 +87,25 @@ export const GameDetails = () => {
         }
     }
 
+    const getPlatform = (platform) => {
+        switch (platform) {
+            case "PlayStation 5":
+                return playstationFive;
+            case "PlayStation 4":
+                return playstation;
+            case "Xbox One":
+                return xbox;
+            case "PC":
+                return steam;
+            case "Nintendo Switch":
+                return nintendo;
+            case "iOS":
+                return apple;
+            default:
+                return gamepad;
+        }
+    }
+
     const { screenshots, game, isLoading } = useSelector(state => state.details)
     return (
         <Fragment >
@@ -94,7 +121,7 @@ export const GameDetails = () => {
                                 <h3>Platforms</h3>
                                 <Platforms>
                                     {game.platforms.map(platform => {
-                                        return <h3 key={platform.platform.id} >{platform.platform.name}</h3>
+                                        return <img key={platform.platform.id} src={getPlatform(platform.platform.name)} alt={platform.platform.name} />
                                     })}
                                 </Platforms>
                             </Info>
