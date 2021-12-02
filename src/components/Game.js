@@ -6,6 +6,7 @@ import { motion } from "framer-motion/dist/es";
 import { useDispatch } from "react-redux";
 import { getDetails } from "../actions/detailsAction";
 import { Link } from "react-router-dom";
+import { smallImage } from "../util";
 
 const StyledGame = styled(motion.div)`
     min-height: 30vh;
@@ -13,6 +14,7 @@ const StyledGame = styled(motion.div)`
     text-align: center;
     border-radius: 1rem;
     cursor: pointer;
+    overflow: hidden;
     img {
         width: 100%;
         height: 40vh;
@@ -24,6 +26,7 @@ const StyledGame = styled(motion.div)`
 export default function Game({ game }) {
     const dispatch = useDispatch();
     const loadDetailsHandler = () => {
+        document.body.style.overflow = "hidden";
         dispatch(getDetails(game.id));
     }
 
@@ -32,7 +35,7 @@ export default function Game({ game }) {
             <Link to={`/game/${game.id}`} >
                 <h3>{game.name}</h3>
                 <p>{game.released}</p>
-                <img src={game.background_image} alt={game.name} />
+                <img src={smallImage(game.background_image, 640)} alt={game.name} />
             </Link>
         </StyledGame>
     );
