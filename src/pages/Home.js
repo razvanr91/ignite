@@ -35,10 +35,22 @@ const Home = () => {
     }, [dispatch]);
 
     // Extract data
-    const { popularGames, upcomingGames, newGames } = useSelector(state => state.games)
+    const { popularGames, upcomingGames, newGames, searched } = useSelector(state => state.games)
     return (
         <GameList>
             {pathId && <GameDetails />}
+
+            {searched.length > 0 &&
+                <div className="searched" >
+                    <h2>Searched games</h2>
+                    <Games>
+                        {searched.map(game => {
+                            return <Game key={game.id} game={game} />
+                        })}
+                    </Games>
+                </div>
+            }
+
             <h2>Upcoing Games</h2>
             <Games>
                 {upcomingGames.map(game => {
